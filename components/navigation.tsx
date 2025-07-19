@@ -36,7 +36,7 @@ export const Navigation = () => {
           <Button
             variant={"outline"}
             size={"sm"}
-            className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible::ring-transparent outline-none text-white focus:bg-white/30 transition"
+            className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition"
           >
             <Menu className="size-4" />
           </Button>
@@ -60,7 +60,11 @@ export const Navigation = () => {
   }
 
   return (
-    <nav className="hidden lg:flex gap-x-2 overflow-x-auto">
+    <nav
+      className="hidden lg:flex gap-x-2 overflow-x-auto"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       {routes.map((route) => (
         <NavButton
           key={route.href}

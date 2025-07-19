@@ -1,11 +1,14 @@
 // index.ts
 import { Hono } from "hono";
-import authors from "./authors";
-import books from "./books";
+import { handle } from "hono/vercel";
 
-const app = new Hono();
+export const runtime = "edge";
 
-const routes = app.route("/authors", authors).route("/books", books);
+const app = new Hono().basePath("/api");
 
-export default app;
-export type AppType = typeof routes;
+app.get("/hello", (c) => {
+  return c.json({ hello: "world" });
+});
+
+export const GET = handle(app);
+export const POST = handle(app);

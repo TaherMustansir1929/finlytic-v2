@@ -68,6 +68,7 @@ export const AccountForm = ({
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

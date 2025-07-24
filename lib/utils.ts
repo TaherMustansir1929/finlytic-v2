@@ -12,3 +12,11 @@ export function convertAmountToMiliUnits(amount: number) {
 export function convertAmountToBaseUnit(amount: number) {
   return amount / 1000;
 }
+
+export function formatCurrency(value: number) {
+  return Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "PKR",
+    minimumFractionDigits: 2,
+  }).format(value);
+}

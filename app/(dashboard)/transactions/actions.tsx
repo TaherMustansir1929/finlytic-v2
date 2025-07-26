@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 
 import { useConfirm } from "@/hooks/use-confirm";
@@ -32,7 +33,13 @@ export const Actions = ({ id }: Props) => {
     const ok = await confirm();
     if (!ok) return;
 
-    deleteMutation.mutate();
+    try {
+      await deleteMutation.mutateAsync();
+      toast.success("Transaction deleted successfully.");
+    } catch (error) {
+      console.error("Failed to delete transaction:", error);
+      toast.error("Failed to delete transaction.");
+    }
   };
 
   return (

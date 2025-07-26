@@ -17,10 +17,16 @@ interface SelectedColumnsState {
   [key: string]: string | null;
 }
 
+interface ImportedTransaction {
+  amount: number;
+  date: string;
+  payee: string;
+  [key: string]: any; // for additional optional fields
+}
 type Props = {
   data: string[][];
   onCancel: () => void;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: ImportedTransaction[]) => void;
 };
 
 export const ImportCard = ({ data, onCancel, onSubmit }: Props) => {

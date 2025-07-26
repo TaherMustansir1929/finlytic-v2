@@ -1,6 +1,6 @@
 "use client";
 
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { InferResponseType } from "hono";
 import { ArrowUpDown } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
@@ -57,7 +57,8 @@ export const columns: ColumnDef<ResponseType>[] = [
       );
     },
     cell: ({ row }) => {
-      const date = row.getValue("date") as Date;
+      const raw = row.getValue("date") as string | Date;
+      const date = typeof raw === "string" ? parseISO(raw) : raw;
       return <span>{format(date, "dd MMM, yyyy")}</span>;
     },
   },

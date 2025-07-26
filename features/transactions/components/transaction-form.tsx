@@ -66,6 +66,7 @@ export const TransactionForm = ({
 
   const handleSubmit = (values: formValues) => {
     const amount = parseFloat(values.amount);
+    if (isNaN(amount)) return;
     const amountInMiliUnits = convertAmountToMiliUnits(amount);
 
     onSubmit({

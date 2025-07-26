@@ -23,11 +23,11 @@ export const AmountInput = ({
   disabled,
 }: Props) => {
   const parsedValue = parseFloat(value);
-  const isIncome = parsedValue >= 0;
-  const isExpense = parsedValue < 0;
+  const isIncome = !isNaN(parsedValue) && parsedValue >= 0;
+  const isExpense = !isNaN(parsedValue) && parsedValue < 0;
 
   const onReverseValue = () => {
-    if (!value) return;
+    if (!value || isNaN(parseFloat(value))) return;
 
     const newValue = parseFloat(value) * -1;
     onChange(newValue.toString());

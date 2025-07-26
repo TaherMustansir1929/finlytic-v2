@@ -20,15 +20,20 @@ export const CategoryColumn = ({ id, category, categoryId }: Props) => {
   };
 
   return (
-    <div
+    <button
       onClick={onClick}
       className={cn(
-        "flex items-center cursor-pointer hover:underline",
+        "flex items-center cursor-pointer hover:underline bg-transparent border-none p-0 text-left",
         !category && "text-rose-500"
       )}
+      aria-label={
+        category
+          ? `View category: ${category}`
+          : "View uncategorized transaction"
+      }
     >
       {!category && <TriangleAlert className="mr-2 size-4 shrink-0" />}
       {category || "Uncategorized"}
-    </div>
+    </button>
   );
 };
